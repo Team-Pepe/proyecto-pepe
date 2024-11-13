@@ -59,6 +59,23 @@ select{
     background-color: green;
     color: white;
 }
+
+.save-task{
+    background-color: white;
+    border: 1px solid green;
+    color: green;
+    
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.save-task:hover{
+    background-color: green;
+    border: none;
+    color: white;
+}
+
 .clear{
 
     border: 1px solid rgb(11, 173, 238);
