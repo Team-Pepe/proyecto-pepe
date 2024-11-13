@@ -1,13 +1,17 @@
 const taskForm = document.querySelector('#taskForm');
-const taskList = [];
+const taskList = JSON.parse(localStorage.getItem('taskList')) || [];
+
+// Escuchar el evento submit del formulario
 taskForm.addEventListener('submit', event => {
   event.preventDefault();
   
-  if(event.submitter.id === "clear") {
+  // Limpiar formulario
+  if (event.submitter.id === "clear") {
     taskForm.reset();
   }
-  
-  if(event.submitter.id === "save") {
+
+  // Guardar tarea
+  if (event.submitter.id === "save") {
     const task = {
       title: event.target.title.value,
       description: event.target.description.value,
@@ -16,31 +20,48 @@ taskForm.addEventListener('submit', event => {
       status: "active"
     };
 
-    // Agregar la tarea al arreglo taskList y guardarla en el localStorage
     taskList.push(task);
     localStorage.setItem('taskList', JSON.stringify(taskList));
     taskForm.reset();
-    
-    // Obtener las tareas del localStorage y volver a renderizarlas
-    const taskList_temp = JSON.parse(localStorage.getItem('taskList'));
-    const taskContainer = document.querySelector('#taskContainer');
-    
-    // Limpiar el contenido de taskContainer antes de renderizar las tareas
-    taskContainer.innerHTML = '';
-    
-    if(taskList_temp) {
-      taskList_temp.forEach((task, index) => {
-        taskContainer.innerHTML += `
-          <article>
-            <span>${index}</span>
-            <h3>${task.title}</h3>
-            <p>${task.description}</p>
-            <span>${task.status}</span>
-            <span>${task.category_description}</span>
-            <span>${task.category}</span>
-          </article>
-        `;
-      });
-    }
+    renderTasks(); // Llama a una función para renderizar las tareas
   }
+
 });
+
+// Renderizar tareas
+function renderTasks() {
+  const taskContainer = document.querySelector('#taskContainer');
+  taskContainer.innerHTML = '';
+
+  taskList.forEach((task, index) => {
+    taskContainer.innerHTML += `
+      <article>
+        <span>${index}</span>
+        <h3>${task.title}</h3>
+        <p>${task.description}</p>
+        <span>${task.status}</span>
+        <span>${task.category_description}</span>
+        <span>${task.category}</span>
+        <button class="delete-task" data-index="${index}">Eliminar</button>
+      </article>
+    `;
+  });
+
+  // Agregar eventos de clic para los botones de eliminar tarea
+  document.querySelectorAll('.delete-task').forEach(button => {
+    button.addEventListener('click', event => {
+      const taskIndex = event.target.dataset.index;
+      deleteTask(taskIndex);
+    });
+  });
+}
+
+// Función para eliminar una tarea específica
+function deleteTask(index) {
+  taskList.splice(index, 1); // Elimina la tarea del arreglo
+  localStorage.setItem('taskList', JSON.stringify(taskList)); // Actualiza el localStorage
+  renderTasks(); // Vuelve a renderizar la lista
+}
+
+// Renderizar tareas al cargar la página
+document.addEventListener('DOMContentLoaded', renderTasks);
