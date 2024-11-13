@@ -1,0 +1,153 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background-color: rgba(37, 82, 133, 0.842);
+    min-width: 360px;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 16pt;
+    /* width: 1200px; */
+}
+
+main{
+    margin: 24px ;
+}
+
+input{
+    border-radius: 5px;
+    display: block;
+    height: 30px;
+    margin-bottom: 24px;
+    width: 75%;
+}
+
+textarea{
+    border-radius: 10px;
+    display: block;
+    margin-bottom: 24px;
+    width: 75%;
+}
+
+select{
+    width: 75%;
+    font-size: 14pt;
+    height: 42px;
+    margin-bottom: 24px;
+}
+
+.button-div button{
+    width: 200px;
+    height: 36px;
+    display: block;
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+.save{
+    background-color: white;
+    color: green;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid green;
+}
+
+.save:hover{
+    border: none;
+    background-color: green;
+    color: white;
+}
+.clear{
+
+    border: 1px solid rgb(11, 173, 238);
+    background-color: white;
+    color: rgb(11, 173, 238);
+
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.clear:hover{
+    background-color: rgb(11, 173, 238);
+    border: none;
+    color: white;
+    
+}
+
+.delete{
+    background-color: white;
+    border: 1px solid rgb(255, 31, 31, 0.836);
+    color: red;
+    
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.delete:hover{
+    background-color: red;
+    border: none;
+    color: white;
+}
+
+
+
+article{
+    background-color: rgb(215, 219, 223);
+    margin-bottom: 24px;
+    padding: 24px 36px;
+    width: 500px;
+}
+
+.news-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.news-container  a{
+    color: white;
+    display: block;
+    font-weight: bold;
+    text-align: end;
+}
+
+ /* X-Small devices (portrait phones, less than 576px) */
+ /* No media query for `xs` since this is the default in Bootstrap */
+
+ /* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) { 
+
+
+ }
+
+ /* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+
+    body{
+        font-size: 2rem;
+    }
+ }
+
+ /* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+
+
+    .button-div button{
+        display: inline-block;
+        width: 200px;
+    }
+ }
+
+ /* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+
+ }
+
+ /* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) { 
+
+ }
