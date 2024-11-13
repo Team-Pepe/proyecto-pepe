@@ -44,7 +44,7 @@ function renderTasks() {
           <option value="1" ${task.category == '1' ? 'selected' : ''}>Nueva funcionalidad</option>
           <option value="2" ${task.category == '2' ? 'selected' : ''}>Documentación</option>
         </select>
-        <button class="save-task" data-index="${index}">Guardar Edición</button>
+        <button class="edit-task" data-index="${index}">Guardar Edición</button>
         <button class="delete-task" data-index="${index}">Eliminar</button>
       </article>
     `;

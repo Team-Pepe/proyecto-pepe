@@ -60,7 +60,7 @@ select{
     color: white;
 }
 
-.save-task{
+.edit-task{
     background-color: white;
     border: 1px solid green;
     color: green;
@@ -70,7 +70,7 @@ select{
     cursor: pointer;
 }
 
-.save-task:hover{
+.edit-task:hover{
     background-color: green;
     border: none;
     color: white;
