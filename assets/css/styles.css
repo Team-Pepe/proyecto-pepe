@@ -59,6 +59,23 @@ select{
     background-color: green;
     color: white;
 }
+
+.save-task{
+    background-color: white;
+    border: 1px solid green;
+    color: green;
+    
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.save-task:hover{
+    background-color: green;
+    border: none;
+    color: white;
+}
+
 .clear{
 
     border: 1px solid rgb(11, 173, 238);
@@ -92,7 +109,21 @@ select{
     border: none;
     color: white;
 }
+.delete-task{
+    background-color: white;
+    border: 1px solid rgb(255, 31, 31, 0.836);
+    color: red;
+    
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+}
 
+.delete-task:hover{
+    background-color: red;
+    border: none;
+    color: white;
+}
 
 
 article{

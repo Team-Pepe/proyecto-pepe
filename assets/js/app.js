@@ -1,12 +1,16 @@
 const taskForm = document.querySelector('#taskForm');
-const taskList = [];
+const taskList = JSON.parse(localStorage.getItem('taskList')) || [];
+
+// Escuchar el evento submit del formulario
 taskForm.addEventListener('submit', event => {
   event.preventDefault();
-  
+
+  // Limpiar formulario
   if (event.submitter.id === "clear") {
     taskForm.reset();
   }
-  
+
+  // Guardar tarea
   if (event.submitter.id === "save") {
     const task = {
       title: event.target.title.value,
@@ -19,43 +23,71 @@ taskForm.addEventListener('submit', event => {
     taskList.push(task);
     localStorage.setItem('taskList', JSON.stringify(taskList));
     taskForm.reset();
-    renderTasks();
+    renderTasks(); // Llama a una función para renderizar las tareas
   }
+
 });
 
+// Renderizar tareas
 function renderTasks() {
-  const taskList_temp = JSON.parse(localStorage.getItem('taskList')) || [];
   const taskContainer = document.querySelector('#taskContainer');
   taskContainer.innerHTML = '';
 
-  taskList_temp.forEach((task, index) => {
+  taskList.forEach((task, index) => {
     taskContainer.innerHTML += `
       <article id="task-${index}">
         <span>${index}</span>
         <h3 contenteditable="true">${task.title}</h3>
         <p contenteditable="true">${task.description}</p>
-        <span>${task.status}</span>
-        <span>${task.category_description}</span>
-        <span>${task.category}</span>
-        <button onclick="saveEdits(${index})">Guardar Edición</button>
+        <select class="edit-category" data-index="${index}">
+          <option value="0" ${task.category == '0' ? 'selected' : ''}>Error</option>
+          <option value="1" ${task.category == '1' ? 'selected' : ''}>Nueva funcionalidad</option>
+          <option value="2" ${task.category == '2' ? 'selected' : ''}>Documentación</option>
+        </select>
+        <button class="save-task" data-index="${index}">Guardar Edición</button>
+        <button class="delete-task" data-index="${index}">Eliminar</button>
       </article>
     `;
   });
+
+  // Agregar eventos de clic para los botones de eliminar y editar tarea
+  document.querySelectorAll('.delete-task').forEach(button => {
+    button.addEventListener('click', event => {
+      const taskIndex = event.target.dataset.index;
+      deleteTask(taskIndex);
+    });
+  });
+
+  document.querySelectorAll('.edit-task').forEach(button => {
+    button.addEventListener('click', event => {
+      const taskIndex = event.target.dataset.index;
+      saveEdits(taskIndex);
+    });
+  });
 }
 
+// Función para eliminar una tarea específica
+function deleteTask(index) {
+  taskList.splice(index, 1); // Elimina la tarea del arreglo
+  localStorage.setItem('taskList', JSON.stringify(taskList)); // Actualiza el localStorage
+  renderTasks(); // Vuelve a renderizar la lista
+}
+
+// Función para guardar ediciones en una tarea específica
 function saveEdits(index) {
   const taskContainer = document.querySelector(`#task-${index}`);
   const editedTask = {
     title: taskContainer.querySelector('h3').innerText,
     description: taskContainer.querySelector('p').innerText,
-    category: taskList[index].category,
-    category_description: taskList[index].category_description,
+    category: taskContainer.querySelector('.edit-category').value,
+    category_description: taskContainer.querySelector('.edit-category').selectedOptions[0].text,
     status: taskList[index].status
   };
-  
+
   taskList[index] = editedTask;
-  localStorage.setItem('taskList', JSON.stringify(taskList));
-  renderTasks();
+  localStorage.setItem('taskList', JSON.stringify(taskList)); // Actualiza el localStorage
+  renderTasks(); // Vuelve a renderizar la lista
 }
 
-renderTasks();
+// Renderizar tareas al cargar la página
+document.addEventListener('DOMContentLoaded', renderTasks);
