@@ -64,16 +64,19 @@ select{
     background-color: white;
     border: 1px solid green;
     color: green;
-    
-    font-weight: bold;
+    display: block;
     border-radius: 10px;
     cursor: pointer;
+    margin-bottom: 10px; 
+    font-weight: bold;
 }
 
 .edit-task:hover{
     background-color: green;
-    border: none;
+    
     color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
 }
 
 .clear{
@@ -113,7 +116,7 @@ select{
     background-color: white;
     border: 1px solid rgb(255, 31, 31, 0.836);
     color: red;
-    
+    display: block;
     font-weight: bold;
     border-radius: 10px;
     cursor: pointer;
@@ -121,7 +124,7 @@ select{
 
 .delete-task:hover{
     background-color: red;
-    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     color: white;
 }
 
