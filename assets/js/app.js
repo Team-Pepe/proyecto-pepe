@@ -15,17 +15,10 @@ taskForm.addEventListener('submit', event => {
     const task = {
       title: event.target.title.value,
       description: event.target.description.value,
-<<<<<<< HEAD
       categoria: event.target.categoria.value,
       dueDate: event.target.dueDate.value,
       category: event.target.category.value,
       category_description: event.target.category.options[event.target.category.selectedIndex].text,
-=======
-      category: event.target.categoria.value,
-      estado: event.target.estado.value,
-      estado_description: event.target.estado.options[event.target.estado.selectedIndex].text,
-      dueDate: event.target.dueDate.value,
->>>>>>> 81ad9d8c59bc26783674a9c70d8c911ec9fa83b4
       status: "active"
     };
 
@@ -106,7 +99,6 @@ function saveEdits(index) {
     category: taskContainer.querySelector('.edit-category').value,
     category_description: taskContainer.querySelector('.edit-category').selectedOptions[0].text,
     status: taskList[index].status
->>>>>>> 81ad9d8c59bc26783674a9c70d8c911ec9fa83b4
   };
 
   taskList[index] = editedTask;
