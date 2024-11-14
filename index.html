@@ -55,6 +55,15 @@
         <!-- Columna 2: Lista de tareas -->
         <section class="column" id="taskListContainer">
             <h2>Lista de Tareas</h2>
+            <!-- RF-5: Filtrar tareas -->
+            <h3>Filtrar por:</h3>
+            <select id="taskFilter" class="filter-select">
+                <option value="all">Todas</option>
+                <option value="active">En proceso</option>
+                <option value="completed">Finalizadas</option>
+            </select>
+            <!-- buscar tareas por nombre -->
+            <input id="taskSearch" type="search" placeholder="Buscar tarea...">
             <div id="taskContainer"></div>
         </section>
     

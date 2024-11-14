@@ -112,3 +112,46 @@ function saveEdits(index) {
 
 // Renderizar tareas al cargar la página
 document.addEventListener('DOMContentLoaded', renderTasks);
+
+
+// Función para filtrar tareas con base al estado :v
+function filterTasks() {
+  const filterValue = document.getElementById('taskFilter').value;
+  const taskContainer = document.getElementById('taskContainer');
+
+  taskList.forEach((task, index) => {
+    const taskHTML = document.getElementById(`task-${index}`);
+    if (filterValue === 'all' || task.status === filterValue) {
+      taskHTML.style.display = 'block';
+    } else {
+      taskHTML.style.display = 'none';
+    }
+  });
+}
+
+//agrega evento de cambio al select de filtro
+document.getElementById('taskFilter').addEventListener('change', filterTasks);
+
+//Llama a la función de filtro al cargar la página
+document.addEventListener('DOMContentLoaded', filterTasks);
+
+// Función para buscar tareas por nombre
+function searchTasks() {
+  const searchValue = document.getElementById('taskSearch').value.toLowerCase();
+  const taskContainer = document.getElementById('taskContainer');
+
+  taskList.forEach((task, index) => {
+    const taskHTML = document.getElementById(`task-${index}`);
+    if (task.title.toLowerCase().includes(searchValue)) {
+      taskHTML.style.display = 'block';
+    } else {
+      taskHTML.style.display = 'none';
+    }
+  });
+}
+
+// Agrega evento de cambio al input de búsqueda
+document.getElementById('taskSearch').addEventListener('input', searchTasks);
+
+// Llama a la función de búsqueda al cargar la página
+document.addEventListener('DOMContentLoaded', searchTasks);
