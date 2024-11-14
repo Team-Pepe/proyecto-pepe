@@ -15,8 +15,10 @@ taskForm.addEventListener('submit', event => {
     const task = {
       title: event.target.title.value,
       description: event.target.description.value,
-      category: event.target.category.value,
-      category_description: event.target.category.options[event.target.category.selectedIndex].text,
+      category: event.target.categoria.value,
+      estado: event.target.estado.value,
+      estado_description: event.target.estado.options[event.target.estado.selectedIndex].text,
+      dueDate: event.target.dueDate.value,
       status: "active"
     };
 
@@ -25,7 +27,6 @@ taskForm.addEventListener('submit', event => {
     taskForm.reset();
     renderTasks(); // Llama a una función para renderizar las tareas
   }
-
 });
 
 // Renderizar tareas
@@ -36,15 +37,16 @@ function renderTasks() {
   taskList.forEach((task, index) => {
     taskContainer.innerHTML += `
       <article id="task-${index}">
-        <span>${index}</span>
-        <h3 class= "title-edit" contenteditable="true">${task.title}</h3>
-        <p class = "content-edit" contenteditable="true">${task.description}</p>
-        <select class="edit-category" data-index="${index}">
-          <option value="0" ${task.category == '0' ? 'selected' : ''}>Error</option>
-          <option value="1" ${task.category == '1' ? 'selected' : ''}>Nueva funcionalidad</option>
-          <option value="2" ${task.category == '2' ? 'selected' : ''}>Documentación</option>
+        <h3 class="title-edit" contenteditable="true">${task.title}</h3>
+        <p class="content-edit" contenteditable="true">${task.description}</p>
+        <p class="category-edit" contenteditable="true">Categoria: ${task.category}</p>
+        <input type="date" class="edit-date" value="${task.dueDate}" data-index="${index}">
+        <select class="edit-estado" data-index="${index}">
+          <option value="0" ${task.estado == '0' ? 'selected' : ''}>Error</option>
+          <option value="1" ${task.estado == '1' ? 'selected' : ''}>Nueva funcionalidad</option>
+          <option value="2" ${task.estado == '2' ? 'selected' : ''}>Documentación</option>
         </select>
-        <button class="edit-task" data-index="${index}">Guardar </button>
+        <button class="edit-task" data-index="${index}">Guardar</button>
         <button class="delete-task" data-index="${index}">Eliminar</button>
       </article>
     `;
@@ -79,8 +81,10 @@ function saveEdits(index) {
   const editedTask = {
     title: taskContainer.querySelector('h3').innerText,
     description: taskContainer.querySelector('p').innerText,
-    category: taskContainer.querySelector('.edit-category').value,
-    category_description: taskContainer.querySelector('.edit-category').selectedOptions[0].text,
+    category: taskContainer.querySelector('.category-edit').innerText,
+    estado: taskContainer.querySelector('.edit-estado').value,
+    estado_description: taskContainer.querySelector('.edit-estado').selectedOptions[0].text,
+    dueDate: taskContainer.querySelector('.edit-date').value,
     status: taskList[index].status
   };
 
