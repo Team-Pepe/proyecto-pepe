@@ -15,10 +15,17 @@ taskForm.addEventListener('submit', event => {
     const task = {
       title: event.target.title.value,
       description: event.target.description.value,
+<<<<<<< HEAD
       categoria: event.target.categoria.value,
       dueDate: event.target.dueDate.value,
       category: event.target.category.value,
       category_description: event.target.category.options[event.target.category.selectedIndex].text,
+=======
+      category: event.target.categoria.value,
+      estado: event.target.estado.value,
+      estado_description: event.target.estado.options[event.target.estado.selectedIndex].text,
+      dueDate: event.target.dueDate.value,
+>>>>>>> 81ad9d8c59bc26783674a9c70d8c911ec9fa83b4
       status: "active"
     };
 
@@ -27,7 +34,6 @@ taskForm.addEventListener('submit', event => {
     taskForm.reset();
     renderTasks(); // Llama a una función para renderizar las tareas
   }
-
 });
 
 // Renderizar tareas
@@ -41,6 +47,7 @@ function renderTasks() {
     const isCompleted = task.status === 'completed';
     const taskHTML = `
       <article id="task-${index}">
+<<<<<<< HEAD
         <h3 class="title-edit ${isCompleted ? 'readonly' : ''}" contenteditable="${!isCompleted}">${task.title}</h3>
         <p class="content-edit ${isCompleted ? 'readonly' : ''}" contenteditable="${!isCompleted}">${task.description}</p>
         <p class="category-edit">Categoría: ${task.categoria}</p>
@@ -48,6 +55,19 @@ function renderTasks() {
         <select class="edit-category" data-index="${index}">
           <option value="0" ${task.category == '0' ? 'selected' : ''}>En proceso</option>
           <option value="1" ${task.category == '1' ? 'selected' : ''}>Finalizar</option>
+=======
+        <h3 class="title-edit" contenteditable="true">${task.title}</h3>
+        <p class="content-edit" contenteditable="true">${task.description}</p>
+        <div> 
+          <span>Categoría:</span> 
+          <span class="category-edit" contenteditable="true">${task.category}</span> 
+        </div>
+        <input type="date" class="edit-date" value="${task.dueDate}" data-index="${index}">
+        <select class="edit-estado" data-index="${index}">
+          <option value="0" ${task.estado == '0' ? 'selected' : ''}>Error</option>
+          <option value="1" ${task.estado == '1' ? 'selected' : ''}>Nueva funcionalidad</option>
+          <option value="2" ${task.estado == '2' ? 'selected' : ''}>Documentación</option>
+>>>>>>> 81ad9d8c59bc26783674a9c70d8c911ec9fa83b4
         </select>
         <button class="edit-task" data-index="${index}">Guardar</button>
         <button class="delete-task" data-index="${index}">Eliminar</button>
@@ -97,11 +117,19 @@ function saveEdits(index) {
   const editedTask = {
     title: taskContainer.querySelector('h3').innerText,
     description: taskContainer.querySelector('p').innerText,
+<<<<<<< HEAD
     categoria: taskContainer.querySelector('.category-edit').innerText.split(": ")[1] || "",
     category: taskContainer.querySelector('.edit-category').value,
     category_description: taskContainer.querySelector('.edit-category').selectedOptions[0].text,
     dueDate: taskContainer.querySelector('.edit-date').value,
     status: taskContainer.querySelector('.edit-category').value === '1' ? 'completed' : 'active'
+=======
+    category: taskContainer.querySelector('.category-edit').innerText,
+    estado: taskContainer.querySelector('.edit-estado').value,
+    estado_description: taskContainer.querySelector('.edit-estado').selectedOptions[0].text,
+    dueDate: taskContainer.querySelector('.edit-date').value,
+    status: taskList[index].status
+>>>>>>> 81ad9d8c59bc26783674a9c70d8c911ec9fa83b4
   };
 
   taskList[index] = editedTask;

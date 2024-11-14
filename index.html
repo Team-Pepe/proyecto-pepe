@@ -24,21 +24,24 @@
                     <label for="description">Descripción</label>
                     <textarea name="description" id="description" rows="10" cols="100"></textarea>
                 </div>
-                <div>
-                <div>
+                <div> 
                     <label for="dueDate">Fecha de Vencimiento</label>
-                    <input type="date" name="dueDate" id="dueDate">
+                    <input type="date" name="dueDate" id="dueDate"> 
                 </div>
                 <div>
-                    <label for="categoria">Categoría</label>
+                    <label for="categoria">categoria</label>
                     <input type="text" name="categoria" id="categoria">
                 </div>
-                    <select name="category" id="category">
-                        <option class="menu" value="" disabled selected>Asignar Tarea</option>
+                <div>
+                    <select name="estado" id="estado">
+                        <option class="menu" value="" disabled selected>Seleccione una opción</option>
+                        <option value="0">Error</option>
+                        <option value="1">Nueva funcionalidad</option>
+                        <option value="2">Documentación</option>
                     </select>
                 </div>
                 <div class="button-div">
-                    <button class="save" id="save" type="submit">Asignar Tarea</button>
+                    <button class="save" id="save" type="submit">Guardar Tarea</button>
                 </div>
             </form>
         </section>
@@ -51,8 +54,8 @@
     
         <!-- Columna 3: (Reservada para uso futuro) -->
         <section class="column" id="extraColumn">
-            <h2>Tareas finalizadas</h2>
-            <div id="taskContainerFinish"></div>
+            <h2>Columna Extra</h2>
+            <p>Contenido adicional aquí</p>
         </section>
     </main>
 
