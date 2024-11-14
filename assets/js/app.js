@@ -43,7 +43,10 @@ function renderTasks() {
       <article id="task-${index}">
         <h3 class="title-edit ${isCompleted ? 'readonly' : ''}" contenteditable="${!isCompleted}">${task.title}</h3>
         <p class="content-edit ${isCompleted ? 'readonly' : ''}" contenteditable="${!isCompleted}">${task.description}</p>
-        <p class="category-edit">Categoría: ${task.categoria}</p>
+        <div>
+          <span>Categoría:</span>
+          <span class="category-edit" contenteditable="${!isCompleted}">${task.categoria}</span>
+        </div>
         <input type="date" class="edit-date" value="${task.dueDate}" data-index="${index}">
         <select class="edit-category" data-index="${index}">
           <option value="0" ${task.category == '0' ? 'selected' : ''}>En proceso</option>
@@ -82,8 +85,6 @@ function renderTasks() {
   });
 }
 
-
-
 // Función para eliminar una tarea específica
 function deleteTask(index) {
   taskList.splice(index, 1); // Elimina la tarea del arreglo
@@ -97,7 +98,7 @@ function saveEdits(index) {
   const editedTask = {
     title: taskContainer.querySelector('h3').innerText,
     description: taskContainer.querySelector('p').innerText,
-    categoria: taskContainer.querySelector('.category-edit').innerText.split(": ")[1] || "",
+    categoria: taskContainer.querySelector('.category-edit').innerText,
     category: taskContainer.querySelector('.edit-category').value,
     category_description: taskContainer.querySelector('.edit-category').selectedOptions[0].text,
     dueDate: taskContainer.querySelector('.edit-date').value,
@@ -108,7 +109,6 @@ function saveEdits(index) {
   localStorage.setItem('taskList', JSON.stringify(taskList)); // Actualiza el localStorage
   renderTasks(); // Vuelve a renderizar la lista
 }
-
 
 // Renderizar tareas al cargar la página
 document.addEventListener('DOMContentLoaded', renderTasks);
