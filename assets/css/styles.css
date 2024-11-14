@@ -31,7 +31,7 @@ textarea{
 }
 
 select{
-    width: 75%;
+    width: 76%;
     font-size: 14pt;
     height: 42px;
     margin-bottom: 24px;
@@ -85,6 +85,9 @@ select:hover{
 /* Columna extra */
 #extraColumn {
     background-color: #f3e5f5;
+    word-wrap: break-word; /* Permite que el texto se divida en varias líneas */
+    overflow-wrap: break-word; /* Ajusta el texto para evitar desbordes */
+    white-space: normal;
 }
 
 /* Estilo para artículos de tareas */
@@ -187,6 +190,17 @@ select:hover{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     color: white;
 }
+
+.readonly {
+    background-color: #dfe6e9;
+    cursor: not-allowed;
+    pointer-events: none; /* Evita la interacción */
+    border-radius: 10px;
+    display: block;
+    margin-bottom: 24px;
+    width: 75%;
+    
+}  
 
 article{
     background-color: rgb(215, 219, 223);
