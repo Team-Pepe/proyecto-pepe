@@ -3,7 +3,7 @@
 }
 
 body{
-    background-color: rgba(37, 82, 133, 0.842);
+    background-color: rgba(20, 33, 49, 0.842);
     min-width: 360px;
     margin-right: auto;
     margin-left: auto;
@@ -35,6 +35,19 @@ select{
     font-size: 14pt;
     height: 42px;
     margin-bottom: 24px;
+    border-radius: 10px;
+}
+
+select:hover{
+    border: none;
+    background-color: #e0f7fa;
+    border: 2px solid black;
+
+}
+.edit-category:hover{
+    border: none;
+    background-color: #dfe6e9;
+    border: 2px solid black;
 }
 
 .button-div button{
@@ -44,7 +57,55 @@ select{
     width: 100%;
     margin-bottom: 12px;
 }
+/* Contenedor principal para las tres columnas */
+.main-container {
+    display: flex;
+    gap: 20px;
+}
 
+/* Estilo para cada columna */
+.column {
+    flex: 1;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    min-height: 400px;
+}
+
+/* Columna de formulario */
+#taskFormContainer {
+    background-color: #e0f7fa;
+}
+
+/* Columna de lista de tareas */
+#taskListContainer {
+    background-color: #f1f8e9;
+}
+
+/* Columna extra */
+#extraColumn {
+    background-color: #f3e5f5;
+}
+
+/* Estilo para artículos de tareas */
+#taskContainer article {
+    background-color: #dfe6e9;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+}
+
+.title-edit:hover{
+    border: none;
+    background-color: #dfe6e9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.content-edit:hover{
+    border: none;
+    background-color: #dfe6e9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 .save{
     background-color: white;
     color: green;
@@ -101,7 +162,6 @@ select{
     background-color: white;
     border: 1px solid rgb(255, 31, 31, 0.836);
     color: red;
-    
     font-weight: bold;
     border-radius: 10px;
     cursor: pointer;

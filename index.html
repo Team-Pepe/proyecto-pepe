@@ -11,36 +11,43 @@
     <header id="mainHeader">
     </header>
 
-    <main>
-        <form id="taskForm" action="">
-            <div>
-                <label for="title">Nombre Tarea</label>
-                <input type="text" name="title" id="title">
-            </div>
-            <div>
-                <label for="description">Descripción</label>
-                <textarea name="description" id="description" rows="10" cols="100"></textarea>
-            </div>
-            <div>
-                <select name="category" id="category">
-                    <option value="" disabled selected>Seleccione una opción</option>
-                    <option value="0">Error</option>
-                    <option value="1">Nueva funcionalidad</option>
-                    <option value="2">Documentación</option>
-                </select>
-            </div>
-            <div class="button-div">
-                <button class="save" id="save" type="submit">Guardar Tarea</button>
-
-            </div>
-
-        </form>
-
-        <section>
-            <h2>ToDo List</h2>
-            <div id="taskContainer">
-                
-            </div>
+    <main class="main-container">
+        <!-- Columna 1: Formulario de tareas -->
+        <section class="column" id="taskFormContainer">
+            <form id="taskForm" action="">
+                <h2>Subir Tarea</h2>
+                <div>
+                    <label for="title">Nombre Tarea</label>
+                    <input type="text" name="title" id="title">
+                </div>
+                <div>
+                    <label for="description">Descripción</label>
+                    <textarea name="description" id="description" rows="10" cols="100"></textarea>
+                </div>
+                <div>
+                    <select name="category" id="category">
+                        <option class="menu" value="" disabled selected>Seleccione una opción</option>
+                        <option value="0">Error</option>
+                        <option value="1">Nueva funcionalidad</option>
+                        <option value="2">Documentación</option>
+                    </select>
+                </div>
+                <div class="button-div">
+                    <button class="save" id="save" type="submit">Guardar Tarea</button>
+                </div>
+            </form>
+        </section>
+    
+        <!-- Columna 2: Lista de tareas -->
+        <section class="column" id="taskListContainer">
+            <h2>Lista de Tareas</h2>
+            <div id="taskContainer"></div>
+        </section>
+    
+        <!-- Columna 3: (Reservada para uso futuro) -->
+        <section class="column" id="extraColumn">
+            <h2>Columna Extra</h2>
+            <p>Contenido adicional aquí</p>
         </section>
     </main>
 

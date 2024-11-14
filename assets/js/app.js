@@ -37,14 +37,14 @@ function renderTasks() {
     taskContainer.innerHTML += `
       <article id="task-${index}">
         <span>${index}</span>
-        <h3 contenteditable="true">${task.title}</h3>
-        <p contenteditable="true">${task.description}</p>
+        <h3 class= "title-edit" contenteditable="true">${task.title}</h3>
+        <p class = "content-edit" contenteditable="true">${task.description}</p>
         <select class="edit-category" data-index="${index}">
           <option value="0" ${task.category == '0' ? 'selected' : ''}>Error</option>
           <option value="1" ${task.category == '1' ? 'selected' : ''}>Nueva funcionalidad</option>
           <option value="2" ${task.category == '2' ? 'selected' : ''}>Documentación</option>
         </select>
-        <button class="edit-task" data-index="${index}">Guardar Edición</button>
+        <button class="edit-task" data-index="${index}">Guardar </button>
         <button class="delete-task" data-index="${index}">Eliminar</button>
       </article>
     `;
