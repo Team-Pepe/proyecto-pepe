@@ -47,7 +47,7 @@ function renderTasks() {
           <span>Categoría:</span>
           <span class="category-edit" contenteditable="${!isCompleted}">${task.categoria}</span>
         </div>
-        <input type="date" class="edit-date" value="${task.dueDate}" data-index="${index}">
+        <input type="date" class="edit-date" ${isCompleted ? 'readonly' : ''} value="${task.dueDate}" data-index="${index}">
         <select class="edit-category" data-index="${index}">
           <option value="0" ${task.category == '0' ? 'selected' : ''}>En proceso</option>
           <option value="1" ${task.category == '1' ? 'selected' : ''}>Finalizar</option>
