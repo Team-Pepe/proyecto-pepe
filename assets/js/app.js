@@ -27,6 +27,7 @@ taskForm.addEventListener('submit', event => {
     taskForm.reset();
     renderTasks(); // Llama a una función para renderizar las tareas
   }
+
 });
 
 // Renderizar tareas
@@ -40,13 +41,13 @@ function renderTasks() {
     const isCompleted = task.status === 'completed';
     const taskHTML = `
       <article id="task-${index}">
-        <span>${index}</span>
-        <h3 class= "title-edit" contenteditable="true">${task.title}</h3>
-        <p class = "content-edit" contenteditable="true">${task.description}</p>
+        <h3 class="title-edit ${isCompleted ? 'readonly' : ''}" contenteditable="${!isCompleted}">${task.title}</h3>
+        <p class="content-edit ${isCompleted ? 'readonly' : ''}" contenteditable="${!isCompleted}">${task.description}</p>
+        <p class="category-edit">Categoría: ${task.categoria}</p>
+        <input type="date" class="edit-date" value="${task.dueDate}" data-index="${index}">
         <select class="edit-category" data-index="${index}">
-          <option value="0" ${task.category == '0' ? 'selected' : ''}>Error</option>
-          <option value="1" ${task.category == '1' ? 'selected' : ''}>Nueva funcionalidad</option>
-          <option value="2" ${task.category == '2' ? 'selected' : ''}>Documentación</option>
+          <option value="0" ${task.category == '0' ? 'selected' : ''}>En proceso</option>
+          <option value="1" ${task.category == '1' ? 'selected' : ''}>Finalizar</option>
         </select>
         <button class="edit-task" data-index="${index}">Guardar</button>
         <button class="delete-task" data-index="${index}">Eliminar</button>
@@ -96,9 +97,11 @@ function saveEdits(index) {
   const editedTask = {
     title: taskContainer.querySelector('h3').innerText,
     description: taskContainer.querySelector('p').innerText,
+    categoria: taskContainer.querySelector('.category-edit').innerText.split(": ")[1] || "",
     category: taskContainer.querySelector('.edit-category').value,
     category_description: taskContainer.querySelector('.edit-category').selectedOptions[0].text,
-    status: taskList[index].status
+    dueDate: taskContainer.querySelector('.edit-date').value,
+    status: taskContainer.querySelector('.edit-category').value === '1' ? 'completed' : 'active'
   };
 
   taskList[index] = editedTask;
