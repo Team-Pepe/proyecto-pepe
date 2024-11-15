@@ -28,6 +28,20 @@ function renderCompletedTasks(filter = '') {
         taskContainer.innerHTML += taskHTML;
         }
     });
+    // Agregar eventos de clic para los botones de eliminar y editar tarea
+    document.querySelectorAll('.delete-task').forEach(button => {
+        button.addEventListener('click', event => {
+            const taskIndex = event.target.dataset.index;
+            deleteTask(taskIndex);
+        });
+    });
+
+    document.querySelectorAll('.edit-task').forEach(button => {
+        button.addEventListener('click', event => {
+            const taskIndex = event.target.dataset.index;
+            saveEdits(taskIndex);
+        });
+    });
 }
 
   // Renderizar tareas al cargar la página
