@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News Page</title>
+    <title>Crear Tareas</title>
     <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 <body>
 
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="#">Inicio</a>
-        <a href="crear_tareas.html">Subir Tarea</a>
+        <a href="index.html">Inicio</a>
+        <a href="subir_tarea.html">Subir Tarea</a>
         <a href="lista_tareas.html">Lista de Tareas</a>
-        <a href="tareas_finalizadas.html">Tareas finalizadas</a>
+        <a href="tareas_finalizadas.html">Tareas Finalizadas</a>
     </div>
 
     <header id="mainHeader">
         <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menú</span>
     </header>
 
-    <main class="main-container" id="main">
-        <!-- Columna 1: Formulario de tareas -->
-        <section class="column" id="taskFormContainer">
+    <div class="container" id="main">
+        <!-- Columna: Formulario de tareas -->
+        <div class="task-form" id="taskFormContainer">
             <form id="taskForm" action="">
                 <h2>Subir Tarea</h2>
                 <div>
@@ -31,7 +31,7 @@
                 </div>
                 <div>
                     <label for="description">Descripción</label>
-                    <textarea name="description" id="description" rows="10" cols="100"></textarea>
+                    <textarea name="description" id="description" rows="10" cols="50"></textarea>
                 </div>
                 <div>
                     <label for="dueDate">Fecha de Vencimiento</label>
@@ -44,41 +44,60 @@
                 <div>
                     <select name="category" id="category">
                         <option class="menu" value="" disabled selected>Asignar Tarea</option>
+                        <option value="0">En proceso</option>
+                        <option value="1">Finalizar</option>
                     </select>
                 </div>
                 <div class="button-div">
                     <button class="save" id="save" type="submit">Asignar Tarea</button>
                 </div>
             </form>
-        </section>
-    
-        <!-- Columna 2: Lista de tareas -->
-        <section class="column" id="taskListContainer">
-            <h2>Lista de Tareas</h2>
-            <input id="taskSearch" type="search" placeholder="Buscar tarea...">
-            <div id="taskContainer"></div>
-        </section>
-    
-        <!-- Columna 3: (Reservada para uso futuro) -->
-        <section class="column" id="extraColumn">
-            <h2>Tareas finalizadas</h2>
-            <div id="taskContainerFinish"></div>
-        </section>
-    </main>
+        </div>
+    </div>
 
     <footer></footer>
 
     <script>
+        // Función para abrir el menú lateral
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
             document.getElementById("main").style.marginLeft = "250px";
         }
 
+        // Función para cerrar el menú lateral
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
-            document.getElementById("main").style.marginLeft= "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
+
+        // Guardar tareas al enviar el formulario
+        const taskForm = document.querySelector('#taskForm');
+        const taskList = JSON.parse(localStorage.getItem('taskList')) || [];
+
+        if (taskForm) {
+            taskForm.addEventListener('submit', event => {
+                event.preventDefault();
+
+                // Guardar tarea
+                if (event.submitter.id === "save") {
+                    const task = {
+                        title: event.target.title.value,
+                        description: event.target.description.value,
+                        categoria: event.target.categoria.value,
+                        dueDate: event.target.dueDate.value,
+                        category: event.target.category.value,
+                        category_description: event.target.category.options[event.target.category.selectedIndex].text,
+                        status: "active"
+                    };
+
+                    taskList.push(task);
+                    localStorage.setItem('taskList', JSON.stringify(taskList));
+                    taskForm.reset();
+                }
+            });
         }
     </script>
-    <script src="./assets/js/app.js"></script>
 </body>
 </html>
+
+
