@@ -263,6 +263,95 @@ article{
     padding: 16px;
 }
 
+/* Contenedor principal */
+.container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Espacio entre las columnas */
+    flex-wrap: wrap; /* Asegura que los elementos se ajusten en pantallas pequeñas */
+    padding: 20px; /* Añadir algo de relleno */
+}
+
+/* Ajustar los tamaños de los bloques */
+.task-form,
+.calendar {
+    flex: 1; /* Ambos ocupan el mismo tamaño */
+    max-width: 45%; /* Reducir el ancho máximo para asegurar que ambos caben uno al lado del otro */
+    box-sizing: border-box;
+    background: #fff; /* Fondo blanco para ambos */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Añadir margen en la parte inferior para espacio en pantallas pequeñas */
+}
+
+/* Ajustar el calendario */
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-header button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.calendar-header h2 {
+    margin: 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    width: 14.28%;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+thead th {
+    background: #f0f0f0;
+}
+
+tbody td {
+    height: 100px;
+    cursor: pointer;
+    vertical-align: top;
+}
+
+tbody td.today {
+    background: #fffae6;
+    border: 2px solid #f00; /* Borde rojo para resaltar el día actual */
+}
+
+tbody td:hover {
+    background: #f1f1f1;
+}
+
+/* El formulario de tareas */
+.task-form label,
+.task-form input,
+.task-form textarea,
+.task-form select,
+.task-form .button-div {
+    display: block;
+    width: 80%;
+    margin: 0 auto 20px auto; /* Centrar y añadir espacio abajo */
+}
+
+.task-form .button-div button {
+    width: 100%; /* Asegurar que los botones ocupen todo el ancho del contenedor */
+}
+
 
  /* X-Small devices (portrait phones, less than 576px) */
  /* No media query for `xs` since this is the default in Bootstrap */

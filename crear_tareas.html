@@ -53,9 +53,34 @@
         </div>
     </div>
 
+    <div class="calendar">
+        <div class="calendar-header">
+            <button id="prevMonth">&lt;</button>
+            <h2 id="monthYear"></h2>
+            <button id="nextMonth">&gt;</button>
+        </div>
+        <table id="calendarTable">
+            <thead>
+                <tr>
+                    <th>Dom</th>
+                    <th>Lun</th>
+                    <th>Mar</th>
+                    <th>Mié</th>
+                    <th>Jue</th>
+                    <th>Vie</th>
+                    <th>Sáb</th>
+                </tr>
+            </thead>
+            <tbody id="calendarBody">
+                <!-- Aquí se generarán las fechas -->
+            </tbody>
+        </table>
+    </div>
+
     <footer></footer>
 
     <script src="./assets/js/crear_render.js"></script>
+    <script src="./assets/js/calendario_render.js"></script>
 </body>
 </html>
 
