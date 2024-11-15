@@ -17,10 +17,12 @@ function renderCompletedTasks(filter = '') {
                     <span class="category-edit readonly">${task.categoria}</span>
                 </div>
                 <input type="date" class="edit-date" value="${task.dueDate}" readonly>
-                <select class="edit-category" data-index="${index}" disabled>
-                    <option value="0" ${task.category == '0' ? 'selected' : ''}>En proceso</option>
-                    <option value="1" ${task.category == '1' ? 'selected' : ''}>Finalizar</option>
+                <select class="edit-category" data-index="${index}">
+                <option value="0" ${task.category == '0' ? 'selected' : ''}>En proceso</option>
+                <option value="1" ${task.category == '1' ? 'selected' : ''}>Finalizar</option>
                 </select>
+                <button class="edit-task" data-index="${index}">Guardar</button>
+                <button class="delete-task" data-index="${index}">Eliminar</button>
             </article>
         `;
         taskContainer.innerHTML += taskHTML;
