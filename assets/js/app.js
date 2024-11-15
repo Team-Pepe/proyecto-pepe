@@ -133,17 +133,3 @@ document.getElementById('taskSearch').addEventListener('input', searchTasks);
 
 // Llama a la función de búsqueda al cargar la página
 document.addEventListener('DOMContentLoaded', searchTasks);
-
-function addSearchBar() {
-  const searchBar = document.createElement('input');
-  searchBar.id = 'taskSearch';
-  searchBar.type = 'search';
-  searchBar.placeholder = 'Buscar tarea...';
-  document.getElementById('taskListContainer').appendChild(searchBar);
-}
-
-// Llama a la función al cargar la página
-document.addEventListener('DOMContentLoaded', addSearchBar);
-
-// Agrega evento de cambio al input de búsqueda
-document.getElementById('taskSearch').addEventListener('input', searchTasks);
