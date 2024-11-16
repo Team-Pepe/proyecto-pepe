@@ -5,11 +5,6 @@ const taskList = JSON.parse(localStorage.getItem('taskList')) || [];
 taskForm.addEventListener('submit', event => {
   event.preventDefault();
 
-  // Limpiar formulario
-  if (event.submitter.id === "clear") {
-    taskForm.reset();
-  }
-
   // Guardar tarea
   if (event.submitter.id === "save") {
     const task = {

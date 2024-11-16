@@ -8,7 +8,6 @@ body{
     margin-right: auto;
     margin-left: auto;
     font-size: 16pt;
-    /* width: 1200px; */
 }
 
 main{
@@ -85,8 +84,8 @@ select:hover{
 /* Columna extra */
 #extraColumn {
     background-color: #f3e5f5;
-    word-wrap: break-word; /* Permite que el texto se divida en varias líneas */
-    overflow-wrap: break-word; /* Ajusta el texto para evitar desbordes */
+    word-wrap: break-word; 
+    overflow-wrap: break-word; 
     white-space: normal;
 }
 
@@ -267,25 +266,24 @@ article{
 .container {
     display: flex;
     justify-content: space-between;
-    gap: 20px; /* Espacio entre las columnas */
-    flex-wrap: wrap; /* Asegura que los elementos se ajusten en pantallas pequeñas */
-    padding: 20px; /* Añadir algo de relleno */
+    gap: 20px; 
+    flex-wrap: wrap;
+    padding: 20px; 
 }
 
-/* Ajustar los tamaños de los bloques */
 .task-form,
 .calendar {
-    flex: 1; /* Ambos ocupan el mismo tamaño */
-    max-width: 45%; /* Reducir el ancho máximo para asegurar que ambos caben uno al lado del otro */
+    flex: 1; 
+    max-width: 45%; 
     box-sizing: border-box;
-    background: #fff; /* Fondo blanco para ambos */
+    background: #fff; 
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px; /* Añadir margen en la parte inferior para espacio en pantallas pequeñas */
+    margin-bottom: 20px; 
 }
 
-/* Ajustar el calendario */
+/* calendario */
 .calendar-header {
     display: flex;
     justify-content: space-between;
@@ -345,110 +343,114 @@ tbody td:hover {
 .task-form .button-div {
     display: block;
     width: 80%;
-    margin: 0 auto 20px auto; /* Centrar y añadir espacio abajo */
+    margin: 0 auto 20px auto; 
 }
 
 .task-form .button-div button {
-    width: 100%; /* Asegurar que los botones ocupen todo el ancho del contenedor */
+    width: 100%; 
 }
 
- /* Small devices (landscape phones, 576px and up) */
- @media (max-width: 576px) {
+@media (max-width: 576px) {
     /* Estilos para dispositivos muy pequeños */
     body {
-      font-size: 1.5rem;
+        font-size: 1.5rem;
     }
     .main-container {
-      flex-direction: column;
-      align-items: center;  
-      margin: 0 auto;  
+        flex-direction: column;
+        align-items: center;  
+        margin: 0 auto;  
     }
     .column {
-      flex: none;
-      width: 100%;
+        flex: none;
+        width: 100%;
     }
     .task-form,
     .calendar {
-      max-width: 100%;
-      width: 80%;
-      margin: 0 auto;  
+        max-width: 100%;
+        width: 80%;
+        margin: 0 auto;  
     }
-     article {
-      font-size: 0.9rem;
+    article {
+        font-size: 0.9rem;
     } 
-  }
-  
-  /* Medium devices (tablets, 768px and up) */
-  @media (min-width: 576px) and (max-width: 767px) {
+}
+
+
+@media (min-width: 576px) and (max-width: 767px) {
     /* Estilos para la lista de tareas */
-  #taskListContainer, /* el "#" para ubicarlo por id directamente */
-  #taskContainerFinish {
-    overflow-y: auto; /* Añade una barra de desplazamiento vertical si es necesario */
-    padding: 20px;
-  }
-  
+    #taskListContainer, 
+    #taskContainerFinish {
+        overflow-y: auto; 
+        padding: 20px;
+    }
+
   /* Estilos para los artículos de tareas */
-  #taskContainer article, 
-  #taskContainerFinish article {
-    background-color: #dfe6e9;
-    padding: 16px;
-    margin-bottom: 16px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%; /* para que el artículo ocupe todo el ancho del contenedor */
-    box-sizing: border-box; /* Incluye el padding y borde en el ancho */
-  }  
-    /* Estilos para dispositivos medianos/estandar */
+    #taskContainer article, 
+    #taskContainerFinish article {
+        background-color: #dfe6e9;
+        padding: 16px;
+        margin-bottom: 16px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 100%; 
+        box-sizing: border-box; 
+    }  
+    
     body {
-      font-size: 1.8rem;
+        font-size: 1.8rem;
     }
     .main-container {
-      flex-direction: column;
-      align-items: center;  
-      margin: 0 auto;  
-      max-width: 85%;  
+        flex-direction: column;
+        align-items: center;  
+        margin: 0 auto;  
+        max-width: 85%;  
     }
     .column {
-      flex: none;
-      width: 100%;
+        flex: none;
+        width: 100%;
     }
     .task-form,
     .calendar {
-      max-width: 90%;
-      width: 90%;
-      margin: 0 auto;  
+        max-width: 90%;
+        width: 90%;
+        margin: 0 auto;  
     }
     #calendarTable {
-      font-size: 20px;
+        font-size: 20px;
     }  
     article {
-      font-size: 1.0rem;
-      width: 85%; /* Ancho del artículo en pantallas medianas/estandar */
-      margin: 20px auto; /* Margen superior e inferior de 20px, y margen lateral automático */  
+        font-size: 1.0rem;
+        width: 85%; 
+        margin: 20px auto; 
     }
-  
-  }
-  
-  
-   /* Large devices (desktops, 992px and up) */
-  @media (min-width: 992px) { 
-  
-  
-      .button-div button{
-          display: inline-block;
-          width: 200px;
-      }
-      article {
-      font-size: 1.1rem;
+
+}
+
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+
+    .button-div button{
+        display: inline-block;
+        width: 200px;
     }
-   }
-  
-   /* X-Large devices (large desktops, 1200px and up) */
-  @media (min-width: 1200px) { 
-  
-   }
-  
-   /* XX-Large devices (larger desktops, 1400px and up) */
-  @media (min-width: 1400px) { 
-  
-   }
+    article {
+        font-size: 1.1rem;
+    }
+}
+
+
+/* tamaño del calendario */
+@media (min-width: 992px) {
+    .container {
+        display: grid; /* Usar Grid Layout */
+        grid-template-columns: 1fr 1fr; 
+        gap: 20px; 
+    }
+
+    .task-form,
+    .calendar {
+        margin-bottom: 0; 
+        max-width: 100%; 
+    }
+}
