@@ -352,40 +352,103 @@ tbody td:hover {
     width: 100%; /* Asegurar que los botones ocupen todo el ancho del contenedor */
 }
 
-
- /* X-Small devices (portrait phones, less than 576px) */
- /* No media query for `xs` since this is the default in Bootstrap */
-
  /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) { 
-
-
- }
-
- /* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) { 
-
-    body{
-        font-size: 2rem;
+ @media (max-width: 576px) {
+    /* Estilos para dispositivos muy pequeños */
+    body {
+      font-size: 1.5rem;
     }
- }
-
- /* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) { 
-
-
-    .button-div button{
-        display: inline-block;
-        width: 200px;
+    .main-container {
+      flex-direction: column;
+      align-items: center;  
+      margin: 0 auto;  
     }
- }
-
- /* X-Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) { 
-
- }
-
- /* XX-Large devices (larger desktops, 1400px and up) */
-@media (min-width: 1400px) { 
-
- }
+    .column {
+      flex: none;
+      width: 100%;
+    }
+    .task-form,
+    .calendar {
+      max-width: 100%;
+      width: 80%;
+      margin: 0 auto;  
+    }
+     article {
+      font-size: 0.9rem;
+    } 
+  }
+  
+  /* Medium devices (tablets, 768px and up) */
+  @media (min-width: 576px) and (max-width: 767px) {
+    /* Estilos para la lista de tareas */
+  #taskListContainer, /* el "#" para ubicarlo por id directamente */
+  #taskContainerFinish {
+    overflow-y: auto; /* Añade una barra de desplazamiento vertical si es necesario */
+    padding: 20px;
+  }
+  
+  /* Estilos para los artículos de tareas */
+  #taskContainer article, 
+  #taskContainerFinish article {
+    background-color: #dfe6e9;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%; /* para que el artículo ocupe todo el ancho del contenedor */
+    box-sizing: border-box; /* Incluye el padding y borde en el ancho */
+  }  
+    /* Estilos para dispositivos medianos/estandar */
+    body {
+      font-size: 1.8rem;
+    }
+    .main-container {
+      flex-direction: column;
+      align-items: center;  
+      margin: 0 auto;  
+      max-width: 85%;  
+    }
+    .column {
+      flex: none;
+      width: 100%;
+    }
+    .task-form,
+    .calendar {
+      max-width: 90%;
+      width: 90%;
+      margin: 0 auto;  
+    }
+    #calendarTable {
+      font-size: 20px;
+    }  
+    article {
+      font-size: 1.0rem;
+      width: 85%; /* Ancho del artículo en pantallas medianas/estandar */
+      margin: 20px auto; /* Margen superior e inferior de 20px, y margen lateral automático */  
+    }
+  
+  }
+  
+  
+   /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) { 
+  
+  
+      .button-div button{
+          display: inline-block;
+          width: 200px;
+      }
+      article {
+      font-size: 1.1rem;
+    }
+   }
+  
+   /* X-Large devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) { 
+  
+   }
+  
+   /* XX-Large devices (larger desktops, 1400px and up) */
+  @media (min-width: 1400px) { 
+  
+   }
